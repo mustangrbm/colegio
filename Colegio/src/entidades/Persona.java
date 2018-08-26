@@ -7,21 +7,23 @@ package entidades;
 
 /**
  *
- * @author bustatech
+ * @author cbustamante
  */
-public class Alumnos {
-    private Integer idAlumno;
-    private String nombre;
-    private String apellido;
-    private Integer cedula;
+public class Persona {
+    public String nombre;
+    public String apellido;
+    public Integer cedula;
 
-    public Integer getIdAlumno() {
-        return idAlumno;
+    public Persona() {        
     }
-
-    public void setIdAlumno(Integer idAlumno) {
-        this.idAlumno = idAlumno;
+    
+    public Persona(String nombre, String apellido, Integer cedula) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cedula = cedula;
     }
+    
+    
 
     public String getNombre() {
         return nombre;
@@ -47,7 +49,5 @@ public class Alumnos {
         this.cedula = cedula;
     }
     
-    
-            
     
 }
