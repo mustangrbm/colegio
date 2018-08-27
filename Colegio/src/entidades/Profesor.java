@@ -30,6 +30,11 @@ public class Profesor  extends Persona{
     public void setIdProfesor(Integer idProfesor) {
         this.idProfesor = idProfesor;
     }
+    
+    @Override
+    public String rolPersona(){
+        return "Profesor";
+    }
 
 
     @Override
