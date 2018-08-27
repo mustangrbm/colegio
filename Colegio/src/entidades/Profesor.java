@@ -11,7 +11,18 @@ package entidades;
  */
 public class Profesor  extends Persona{
     private Integer idProfesor;
+
+    public Profesor(){
+        
+    }    
+    public Profesor(Integer idProfesor, String nombre, String apellido, Integer cedula) {
+        super(nombre, apellido, cedula);
+        this.idProfesor = idProfesor;
+    }
    
+    
+    
+    
     public Integer getIdProfesor() {
         return idProfesor;
     }

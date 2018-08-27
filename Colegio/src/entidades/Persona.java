@@ -21,9 +21,7 @@ public class Persona {
         this.nombre = nombre;
         this.apellido = apellido;
         this.cedula = cedula;
-    }
-    
-    
+    }        
 
     public String getNombre() {
         return nombre;
@@ -47,6 +45,10 @@ public class Persona {
 
     public void setCedula(Integer cedula) {
         this.cedula = cedula;
+    }
+    
+    public String rolPersona(){
+        return "Persona";
     }
     
     
