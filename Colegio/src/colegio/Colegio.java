@@ -6,9 +6,11 @@
 package colegio;
 
 import entidades.Alumno;
+import entidades.Materia;
 import entidades.Profesor;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  *
@@ -56,6 +58,7 @@ public class Colegio {
             System.out.println("Profesores Habilitados: " + profe);
         }
     }
+    
 
     private List<Alumno> obtenerListaAlumnos() {
         List<Alumno> listaAlumnos = new ArrayList();
@@ -85,5 +88,13 @@ public class Colegio {
         //Cargar las cuotas
         return false;
     }
-
-}
+  private List<Materia> obtenerListaMateria() {
+        List<Materia> listaMateria = new ArrayList();
+        Materia Matematica = new Materia(1, "Matematica",30);
+        Materia Sql = new Materia(2, "Sql",40);
+        listaMateria.add(Matematica);
+        listaMateria.add(Sql);
+        return listaMateria;
+    }
+ 
+        }
