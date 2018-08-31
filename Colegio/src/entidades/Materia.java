@@ -49,5 +49,11 @@ public class Materia {
     public void setCantidadMaxima(Integer cantidadMaxima) {
         this.cantidadMaxima = cantidadMaxima;
     }
+
+    @Override
+    public String toString() {
+        return "Materia{" + "idMateria=" + idMateria + ", descripcion=" + descripcion + ", cantidadMaxima=" + cantidadMaxima + '}';
+    }
+    
     
 }

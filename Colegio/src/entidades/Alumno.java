@@ -12,29 +12,26 @@ import java.util.List;
  *
  * @author bustatech
  */
-public class Alumno  extends Persona{
+public class Alumno extends Persona {
+
     private Integer idAlumno;
-    
+
     private List<Materia> listaMaterias;
     private List<Cuota> listaCuotas;
-    
-    
-    
+
     public Alumno() {
         listaMaterias = new ArrayList();
         listaCuotas = new ArrayList();
-        
+
     }
-    
+
     public Alumno(Integer idAlumno, String nombre, String apellido, Integer cedula) {
         super(nombre, apellido, cedula);
         this.idAlumno = idAlumno;
         listaMaterias = new ArrayList();
         listaCuotas = new ArrayList();
     }
-    
-    
-  
+
     public Integer getIdAlumno() {
         return idAlumno;
     }
@@ -58,21 +55,10 @@ public class Alumno  extends Persona{
     public void setListaCuotas(List<Cuota> listaCuotas) {
         this.listaCuotas = listaCuotas;
     }
-    
-    
 
-
-    
     @Override
     public String toString() {
         return "Alumno{" + "idAlumno=" + idAlumno + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + '}';
     }
-    
-    
-    
-    
-    
-    
-            
-    
+
 }
