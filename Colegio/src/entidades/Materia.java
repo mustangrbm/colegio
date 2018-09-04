@@ -14,6 +14,10 @@ public class Materia {
     public static void add(Materia Sql) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public static String materia() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     private Integer idMateria;
     private String descripcion;
     private Integer cantidadMaxima;
@@ -22,6 +26,10 @@ public class Materia {
         this.idMateria = idMateria;
         this.descripcion = descripcion;
         this.cantidadMaxima = cantidadMaxima;
+    }
+
+    public Materia() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 
@@ -53,6 +61,10 @@ public class Materia {
     @Override
     public String toString() {
         return "Materia{" + "idMateria=" + idMateria + ", descripcion=" + descripcion + ", cantidadMaxima=" + cantidadMaxima + '}';
+    }
+
+    public void setMateria(String leer) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

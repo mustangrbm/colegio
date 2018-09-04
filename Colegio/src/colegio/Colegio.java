@@ -6,6 +6,7 @@
 package colegio;
 
 import controladores.AlumnosController;
+import controladores.MateriasController;
 import entidades.Alumno;
 import entidades.Materia;
 import entidades.Profesor;
@@ -76,6 +77,10 @@ public class Colegio {
             else if (opcionSeleccionada.equals("6")){
                 resumenDatosCargados();
             }
+             else if (opcionSeleccionada.equals("4")){ 
+                Materia materia = new MateriasController().registrarMateria();
+                this.listaMateria.add(Materia);
+            }
             
         } while (!opcionSeleccionada.equals("0"));
         System.out.println("Saliendo del sistema.. aiooo");
@@ -109,4 +114,12 @@ public class Colegio {
         
     }
 
-}
+    private void registrarmaterias(){
+         listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
+        listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
+        listaMaterias.addAll( new MateriasManager().cargarListaMaterias());       
+        }
+    }
+
+
+
