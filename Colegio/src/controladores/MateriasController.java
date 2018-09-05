@@ -18,9 +18,10 @@ public class MateriasController {
         System.out.println("************************************");
         System.out.println("Registro de Materia  ");
         System.out.println("************************************");
-        System.out.print("\nIngrese la Materia :");
-       materia.setMateria(LecturaDatosIngresados.leer());
-        
+        System.out.print("\nIngrese el nombre de la Materia :");
+        materia.setDescripcion(LecturaDatosIngresados.leer());
+        System.out.print("\nIngrese la cantidad maxima de alumnos:");
+        materia.setCantidadMaxima(Integer.parseInt(LecturaDatosIngresados.leer()));
         return materia;
     }
     
@@ -30,14 +31,12 @@ public class MateriasController {
         System.out.println("************************************");
         Iterable<Materia> listaMaterias = null;
         for (Materia materia : listaMaterias){
-            System.out.println("Materia :" + Materia.materia() + ";
+//            System.out.println("Materia :" + Materia.materia() + ";
+            System.out.println("Materia :" + materia);
                   
         }
         
     }
 
-    public Materia registrarMateria() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+  
 }

@@ -78,8 +78,9 @@ public class Colegio {
                 resumenDatosCargados();
             }
              else if (opcionSeleccionada.equals("4")){ 
-                Materia materia = new MateriasController().registrarMateria();
-                this.listaMateria.add(Materia);
+                Materia materia = new MateriasController().registrarmateria();
+                //this.listaMateria.add(Materia);
+                this.listaMaterias.add(materia);
             }
             
         } while (!opcionSeleccionada.equals("0"));

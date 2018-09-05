@@ -11,13 +11,7 @@ package entidades;
  */
 public class Materia {
 
-    public static void add(Materia Sql) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public static String materia() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     private Integer idMateria;
     private String descripcion;
     private Integer cantidadMaxima;
@@ -29,11 +23,9 @@ public class Materia {
     }
 
     public Materia() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 
-    
     public Integer getIdMateria() {
         return idMateria;
     }
@@ -63,9 +55,7 @@ public class Materia {
         return "Materia{" + "idMateria=" + idMateria + ", descripcion=" + descripcion + ", cantidadMaxima=" + cantidadMaxima + '}';
     }
 
-    public void setMateria(String leer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
     
     
 }
