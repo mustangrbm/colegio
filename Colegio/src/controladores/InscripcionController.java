@@ -104,6 +104,12 @@ public class InscripcionController {
         System.out.println("Materia Seleccionada : " + materiaSeleccionada.getDescripcion());
         return materiaSeleccionada;
 
+        public void imprimirListaInscripcion(List<Alumno> listaAlumnos){
+        System.out.println("************************************");
+        System.out.println("Lista de Alumnos  ");
+        System.out.println("************************************");
+        for (Alumno alumno : listaAlumnos){
+            System.out.println(alumno.getApellido() + "Nombre :" +º alumno.getNombre() + " \t\t Apellido:" + "\t\t Cedula:" + alumno.getCedula());
     }
 
 }
