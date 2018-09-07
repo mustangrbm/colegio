@@ -52,5 +52,30 @@ public class InscripcionController {
         System.out.println("Alumno Seleccionado : " + alumnoSeleccionado.getNombre() + " " + alumnoSeleccionado.getApellido());
         return alumnoSeleccionado;
     }
+private Profesor seleccionarProfesor(List<Profesor> listaProfesor) {
+       Profesor ProfesorSeleccionado = null;
+
+        do {
+            try {
+
+                System.out.println("-------------------------------------");
+                System.out.println("Inscripciones - Seleccione el Profesor");
+                System.out.println("-------------------------------------");
+                int contador = 0;
+                for (Profesor profesor : listaProfesor) {
+                    System.out.println("{" + contador + "} - " + profesor.getNombre() + " " + profesor.getApellido());
+                    contador++;
+                }
+                System.out.print("\n Codigo Profesor:");
+                Integer idProfesor = Integer.parseInt(LecturaDatosIngresados.leer());
+                ProfesorSeleccionado = listaProfesor.get(idProfesor);
+            } catch (Exception e) {
+                System.out.println("Ocurrio un error al seleccionar el alumno, intente nuevamente");
+            }
+        } while (ProfesorSeleccionado == null);
+        System.out.println("Profesor Seleccionado : " + ProfesorSeleccionado.getNombre() + " " + ProfesorSeleccionado.getApellido());
+        return ProfesorSeleccionado;
+
+        } 
 
 }
