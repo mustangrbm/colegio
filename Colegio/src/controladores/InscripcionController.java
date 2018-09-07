@@ -7,6 +7,7 @@ package controladores;
 
 import entidades.Alumno;
 import entidades.Inscripcion;
+import entidades.Materia;
 import entidades.Profesor;
 import java.util.List;
 import util.LecturaDatosIngresados;
@@ -17,14 +18,15 @@ import util.LecturaDatosIngresados;
  */
 public class InscripcionController {
 
-    public Inscripcion inscribirAlumno(List<Alumno> listaAlumnos, List<Profesor> listaProfesores) {
+    public Inscripcion inscribirAlumno(List<Alumno> listaAlumnos, List<Profesor> listaProfesores, List<Materia> listaMaterias) {
         //1- Seleccionar el alumno
         Alumno alumnoSeleccionado = seleccionarAlumno(listaAlumnos);
         //2- Seleccionar la materia con el profesor
-        
+        Profesor profesorSeleccionado = seleccionarProfesor(listaProfesores);
         //3- Asignar los datos al objeto Inscripcion                
+        Materia materiaSeleccionada = seleccionarMateria(listaMaterias);
 
-        Inscripcion inscripcion = new Inscripcion(); //parche temporal
+        Inscripcion inscripcion = new Inscripcion(1, alumnoSeleccionado, profesorSeleccionado, materiaSeleccionada);
         return inscripcion;
     }
 
@@ -52,8 +54,9 @@ public class InscripcionController {
         System.out.println("Alumno Seleccionado : " + alumnoSeleccionado.getNombre() + " " + alumnoSeleccionado.getApellido());
         return alumnoSeleccionado;
     }
-private Profesor seleccionarProfesor(List<Profesor> listaProfesor) {
-       Profesor ProfesorSeleccionado = null;
+
+    private Profesor seleccionarProfesor(List<Profesor> listaProfesor) {
+        Profesor profesorSeleccionado = null;
 
         do {
             try {
@@ -68,14 +71,39 @@ private Profesor seleccionarProfesor(List<Profesor> listaProfesor) {
                 }
                 System.out.print("\n Codigo Profesor:");
                 Integer idProfesor = Integer.parseInt(LecturaDatosIngresados.leer());
-                ProfesorSeleccionado = listaProfesor.get(idProfesor);
+                profesorSeleccionado = listaProfesor.get(idProfesor);
             } catch (Exception e) {
-                System.out.println("Ocurrio un error al seleccionar el alumno, intente nuevamente");
+                System.out.println("Ocurrio un error al seleccionar el profesor, intente nuevamente");
             }
-        } while (ProfesorSeleccionado == null);
-        System.out.println("Profesor Seleccionado : " + ProfesorSeleccionado.getNombre() + " " + ProfesorSeleccionado.getApellido());
-        return ProfesorSeleccionado;
+        } while (profesorSeleccionado == null);
+        System.out.println("Profesor Seleccionado : " + profesorSeleccionado.getNombre() + " " + profesorSeleccionado.getApellido());
+        return profesorSeleccionado;
 
-        } 
+    }
+    private Materia seleccionarMateria(List<Materia> listaMateria) {
+        Materia materiaSeleccionada = null;
+
+        do {
+            try {
+
+                System.out.println("-------------------------------------");
+                System.out.println("Inscripciones - Seleccione la Materia");
+                System.out.println("-------------------------------------");
+                int contador = 0;
+                for (Materia materia : listaMateria) {
+                    System.out.println("{" + contador + "} - " + materia.getDescripcion());
+                    contador++;
+                }
+                System.out.print("\n Codigo Materia:");
+                Integer idMateria = Integer.parseInt(LecturaDatosIngresados.leer());
+                materiaSeleccionada = listaMateria.get(idMateria);
+            } catch (Exception e) {
+                System.out.println("Ocurrio un error al seleccionar la materia, intente nuevamente");
+            }
+        } while (materiaSeleccionada == null);
+        System.out.println("Materia Seleccionada : " + materiaSeleccionada.getDescripcion());
+        return materiaSeleccionada;
+
+    }
 
 }

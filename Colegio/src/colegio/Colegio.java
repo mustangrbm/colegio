@@ -74,7 +74,7 @@ public class Colegio {
                 Materia materia = new MateriasController().registrarmateria();
                 this.listaMaterias.add(materia);
             } else if (opcionSeleccionada.equals("5")) { //Inscribir Alumno
-                Inscripcion inscripcion = new InscripcionController().inscribirAlumno(listaAlumnos, listaProfesores);
+                Inscripcion inscripcion = new InscripcionController().inscribirAlumno(listaAlumnos, listaProfesores, listaMaterias);
                 this.listaInscripciones.add(inscripcion);
             } else if (opcionSeleccionada.equals("6")) {//Resumen de datos cargados
                 resumenDatosCargados();
