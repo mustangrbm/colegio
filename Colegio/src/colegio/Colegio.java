@@ -6,8 +6,10 @@
 package colegio;
 
 import controladores.AlumnosController;
+import controladores.InscripcionController;
 import controladores.MateriasController;
 import entidades.Alumno;
+import entidades.Inscripcion;
 import entidades.Materia;
 import entidades.Profesor;
 import java.io.Console;
@@ -29,15 +31,15 @@ public class Colegio {
     private List<Alumno> listaAlumnos;
     private List<Profesor> listaProfesores;
     private List<Materia> listaMaterias;
+    private List<Inscripcion> listaInscripciones;
 
     public Colegio() {
         listaAlumnos = new ArrayList();
         listaProfesores = new ArrayList();
         listaMaterias = new ArrayList();
+        listaInscripciones = new ArrayList();
     }
 
-    
-    
     /**
      * Programa Principal
      *
@@ -58,42 +60,36 @@ public class Colegio {
             imprimirMenuPrincipal();
             System.out.print("Seleccione una opcion : ");
             opcionSeleccionada = LecturaDatosIngresados.leer();
-            
+
             //Control de Opciones del menu seleccionadas
-            //Carga Datos Iniciales
-            if (opcionSeleccionada.equals("1")){ 
+            //Carga Datos Iniciales            
+            if (opcionSeleccionada.equals("1")) {
                 cargarDatos();
-            }
-            //Inscribir Alumnos
-            else if (opcionSeleccionada.equals("2")){ 
+            } else if (opcionSeleccionada.equals("2")) { //Inscribir Alumnos
                 Alumno alumno = new AlumnosController().registrarAlumno();
                 this.listaAlumnos.add(alumno);
-            }
-            //Listar Alumnos
-            else if (opcionSeleccionada.equals("3")){ 
+            } else if (opcionSeleccionada.equals("3")) { //Listar Alumnos
                 new AlumnosController().imprimirListaAlumnos(listaAlumnos);
-            }
-            //Resumen de datos cargados
-            else if (opcionSeleccionada.equals("6")){
+            } else if (opcionSeleccionada.equals("4")) { //Registrar Materias
+                Materia materia = new MateriasController().registrarmateria();
+                this.listaMaterias.add(materia);
+            } else if (opcionSeleccionada.equals("5")) { //Inscribir Alumno
+                Inscripcion inscripcion = new InscripcionController().inscribirAlumno(listaAlumnos, listaProfesores);
+                this.listaInscripciones.add(inscripcion);
+            } else if (opcionSeleccionada.equals("6")) {//Resumen de datos cargados
                 resumenDatosCargados();
             }
-             else if (opcionSeleccionada.equals("4")){ 
-                Materia materia = new MateriasController().registrarmateria();
-                //this.listaMateria.add(Materia);
-                this.listaMaterias.add(materia);
-            }
-            
         } while (!opcionSeleccionada.equals("0"));
         System.out.println("Saliendo del sistema.. aiooo");
 
     }
-    
+
     private void imprimirMenuPrincipal() {
         System.out.println("-------------------------------------------------------");
         System.out.println("    Bienvenido al sistema de colegio EscuelitaSoft");
         System.out.println("-------------------------------------------------------");
         System.out.println("(1) Cargar Datos iniciales");
-        System.out.println("(2) Inscribir Alumno");
+        System.out.println("(2) Registrar Alumnos");
         System.out.println("(3) Listar Alumnos");
         System.out.println("(4) Registrar  Materias");
         System.out.println("(5) Inscribir Alumnos");
@@ -104,23 +100,21 @@ public class Colegio {
     private void cargarDatos() {
         listaAlumnos.addAll(new AlumnosManager().cargarListaAlumnos());
         listaProfesores.addAll(new ProfesoresManager().cargarListaProfesores());
-        listaMaterias.addAll( new MateriasManager().cargarListaMaterias());
+        listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
     }
+
     private void resumenDatosCargados() {
         System.out.println("Resumenes de datos Ingresados al Sistema");
         System.out.println("----------------------------------------");
         System.out.println("Alumnos :" + listaAlumnos.size());
         System.out.println("Profesores :" + listaProfesores.size());
         System.out.println("Materias:" + listaMaterias.size());
-        
+
     }
 
-    private void registrarmaterias(){
-         listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
+    private void registrarmaterias() {
         listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
-        listaMaterias.addAll( new MateriasManager().cargarListaMaterias());       
-        }
+        listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
+        listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
     }
-
-
-
+}

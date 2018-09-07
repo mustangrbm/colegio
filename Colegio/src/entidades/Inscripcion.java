@@ -14,7 +14,10 @@ public class Inscripcion {
     private Alumno alumno;
     private Profesor profesor;
     private Materia materia;
-
+   
+    public Inscripcion(){
+        
+    }
     public Inscripcion(Integer idInscripcion, Alumno alumno, Profesor profesor, Materia materia) {
         this.idInscripcion = idInscripcion;
         this.alumno = alumno;
