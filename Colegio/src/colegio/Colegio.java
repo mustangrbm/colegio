@@ -12,11 +12,8 @@ import entidades.Alumno;
 import entidades.Inscripcion;
 import entidades.Materia;
 import entidades.Profesor;
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.function.Consumer;
 import managers.AlumnosManager;
 import managers.MateriasManager;
 import managers.ProfesoresManager;
@@ -67,7 +64,7 @@ public class Colegio {
                 cargarDatos();
             } else if (opcionSeleccionada.equals("2")) { //Inscribir Alumnos
                 Alumno alumno = new AlumnosController().registrarAlumno();
-                this.listaAlumnos.add(alumno);
+                listaAlumnos.add(alumno);
             } else if (opcionSeleccionada.equals("3")) { //Listar Alumnos
                 new AlumnosController().imprimirListaAlumnos(listaAlumnos);
             } else if (opcionSeleccionada.equals("4")) { //Registrar Materias
