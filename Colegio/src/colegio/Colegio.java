@@ -25,13 +25,11 @@ import util.LecturaDatosIngresados;
  */
 public class Colegio {
 
-    private List<Alumno> listaAlumnos;
     private List<Profesor> listaProfesores;
     private List<Materia> listaMaterias;
     private List<Inscripcion> listaInscripciones;
 
     public Colegio() {
-        listaAlumnos = new ArrayList();
         listaProfesores = new ArrayList();
         listaMaterias = new ArrayList();
         listaInscripciones = new ArrayList();
@@ -64,14 +62,13 @@ public class Colegio {
                 cargarDatos();
             } else if (opcionSeleccionada.equals("2")) { //Inscribir Alumnos
                 Alumno alumno = new AlumnosController().registrarAlumno();
-                listaAlumnos.add(alumno);
             } else if (opcionSeleccionada.equals("3")) { //Listar Alumnos
-                new AlumnosController().imprimirListaAlumnos(listaAlumnos);
+                new AlumnosController().imprimirListaAlumnos();
             } else if (opcionSeleccionada.equals("4")) { //Registrar Materias
                 Materia materia = new MateriasController().registrarmateria();
                 this.listaMaterias.add(materia);
             } else if (opcionSeleccionada.equals("5")) { //Inscribir Alumno
-                Inscripcion inscripcion = new InscripcionController().inscribirAlumno(listaAlumnos, listaProfesores, listaMaterias);
+                Inscripcion inscripcion = new InscripcionController().inscribirAlumno(null, listaProfesores, listaMaterias);
                 this.listaInscripciones.add(inscripcion);
             } else if (opcionSeleccionada.equals("6")) {//Resumen de datos cargados
                 resumenDatosCargados();
@@ -95,7 +92,6 @@ public class Colegio {
     }
 
     private void cargarDatos() {
-        listaAlumnos.addAll(new AlumnosManager().cargarListaAlumnos());
         listaProfesores.addAll(new ProfesoresManager().cargarListaProfesores());
         listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
     }
@@ -103,7 +99,7 @@ public class Colegio {
     private void resumenDatosCargados() {
         System.out.println("Resumenes de datos Ingresados al Sistema");
         System.out.println("----------------------------------------");
-        System.out.println("Alumnos :" + listaAlumnos.size());
+//        System.out.println("Alumnos :" + listaAlumnos.size());
         System.out.println("Profesores :" + listaProfesores.size());
         System.out.println("Materias:" + listaMaterias.size());
 

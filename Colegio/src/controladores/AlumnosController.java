@@ -7,6 +7,7 @@ package controladores;
 
 import entidades.Alumno;
 import java.util.List;
+import managers.AlumnosManager;
 import util.LecturaDatosIngresados;
 
 /**
@@ -14,6 +15,8 @@ import util.LecturaDatosIngresados;
  * @author cbustamante
  */
 public class AlumnosController {
+    
+    
     public Alumno registrarAlumno(){
         Alumno alumno = new Alumno();
         System.out.println("************************************");
@@ -25,11 +28,13 @@ public class AlumnosController {
         alumno.setApellido(LecturaDatosIngresados.leer());
         System.out.print("\nIngrese la cedula :");
         alumno.setCedula(Integer.parseInt(LecturaDatosIngresados.leer()));
+        new AlumnosManager().add(alumno);
         
         return alumno;
     }
     
-    public void imprimirListaAlumnos(List<Alumno> listaAlumnos){
+    public void imprimirListaAlumnos(){
+        List<Alumno> listaAlumnos  =  new AlumnosManager().getAll();
         System.out.println("************************************");
         System.out.println("Lista de Alumnos  ");
         System.out.println("************************************");
