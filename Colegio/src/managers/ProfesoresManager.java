@@ -23,13 +23,13 @@ public class ProfesoresManager {
         List<Profesor> listaProfesor = new ArrayList();
         try {
 
-            String query = "SELECT * FROM PROFESOR ";
+            String query = "SELECT * FROM PROFESORES ";
             Statement statement = ConnectionManager.connect().createStatement();
             ResultSet rs;
             rs = statement.executeQuery(query);
             while (rs.next()) {
                 Profesor profesor = new Profesor();
-                profesor.setIdProfesor(rs.getInt("idprofesor"));
+                profesor.setIdProfesor(rs.getInt("idprofesores"));
                 profesor.setNombre(rs.getString("nombre"));
                 profesor.setApellido(rs.getString("apellido"));
                 profesor.setCedula(rs.getInt("cedula"));
@@ -45,7 +45,7 @@ public class ProfesoresManager {
     public boolean add(Profesor profesor) {
         try {
 
-            String query = "insert into profesor (nombre, apellido, cedula) "
+            String query = "insert into profesores (nombre, apellido, cedula) "
                     + " VALUES ('" + profesor.getNombre() + "', '" + profesor.getApellido() + "'," + profesor.cedula + ");";
             Statement statement = ConnectionManager.connect().createStatement();
 
@@ -62,13 +62,13 @@ public class ProfesoresManager {
         try {
             String query = "";
             if (profesor.getIdProfesor() != null) {
-                query = "update profesor  set nombre='" + profesor.getNombre() + "' "
+                query = "update profesores  set nombre='" + profesor.getNombre() + "' "
                         + ",  apellido= '" + profesor.getApellido() + "' "
                         + ", cedula =" + profesor.cedula + 
-                        " WHERE idprofesor =" + profesor.getIdProfesor();
+                        " WHERE idprofesores =" + profesor.getIdProfesor();
             }
             else if (profesor.getCedula() != null) {
-                query = "update profesor  set nombre='" + profesor.getNombre() + "'"
+                query = "update profesores  set nombre='" + profesor.getNombre() + "'"
                         + " ,  apellido= '" + profesor.getApellido() + "' "
                         + " WHERE cedula=" + profesor.getCedula();
             }
@@ -89,10 +89,10 @@ public class ProfesoresManager {
             String query = "";
             if (profesor.getIdProfesor() == null) {
                 if (profesor.getCedula() != null) {
-                    query = "delete from profesor  where cedula=" + profesor.getCedula();
+                    query = "delete from profesores  where cedula=" + profesor.getCedula();
                 }
             } else {
-                query = "delete from profesor  where idprofesor =" + profesor.getIdProfesor();
+                query = "delete from profesores  where idprofesores =" + profesor.getIdProfesor();
             }
             Statement statement = ConnectionManager.connect().createStatement();
 
