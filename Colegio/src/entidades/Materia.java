@@ -12,9 +12,10 @@ package entidades;
 public class Materia {
 
     
-    private Integer idMateria;
+    public Integer idMateria;
     private String descripcion;
     private Integer cantidadMaxima;
+    public String idmateria;
 
     public Materia(Integer idMateria, String descripcion, Integer cantidadMaxima) {
         this.idMateria = idMateria;
@@ -53,6 +54,18 @@ public class Materia {
     @Override
     public String toString() {
         return "Materia{" + "idMateria=" + idMateria + ", descripcion=" + descripcion + ", cantidadMaxima=" + cantidadMaxima + '}';
+    }
+
+    public String getdescripcion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getidMateria() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setidMateria(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
