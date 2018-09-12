@@ -118,10 +118,10 @@ public class ProfesoresManager {
     }
 
     public static void main(String[] args) {
-//        new ProfesoresManager().pruebaGetAll();    
-        new ProfesoresManager().pruebaAddProfesor();
-        new ProfesoresManager().pruebaUpdateProfesor();
-        new ProfesoresManager().pruebaDeleteProfesor();
+        new ProfesoresManager().pruebaGetAll();    
+//        new ProfesoresManager().pruebaAddProfesor();
+//        new ProfesoresManager().pruebaUpdateProfesor();
+//        new ProfesoresManager().pruebaDeleteProfesor();
     }
 
     private void pruebaGetAll() {

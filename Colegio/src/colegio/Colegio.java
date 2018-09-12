@@ -92,8 +92,8 @@ public class Colegio {
     }
 
     private void cargarDatos() {
-        listaProfesores.addAll(new ProfesoresManager().cargarListaProfesores());
-        listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
+//        listaProfesores.addAll(new ProfesoresManager().cargarListaProfesores());
+//        listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
     }
 
     private void resumenDatosCargados() {
