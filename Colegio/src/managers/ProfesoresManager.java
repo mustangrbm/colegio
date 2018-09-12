@@ -6,32 +6,166 @@
 package managers;
 
 import entidades.Profesor;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import util.ConnectionManager;
 
 /**
  *
  * @author cbustamante
  */
 public class ProfesoresManager {
-    public List<Profesor> cargarListaProfesores() {
-        List<Profesor> listaProfesores = new ArrayList();
+
+    public List<Profesor> getAll() {
+        List<Profesor> listaProfesor = new ArrayList();
+        try {
+
+            String query = "SELECT * FROM PROFESOR ";
+            Statement statement = ConnectionManager.connect().createStatement();
+            ResultSet rs;
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
+                Profesor profesor = new Profesor();
+                profesor.setIdProfesor(rs.getInt("idprofesor"));
+                profesor.setNombre(rs.getString("nombre"));
+                profesor.setApellido(rs.getString("apellido"));
+                profesor.setCedula(rs.getInt("cedula"));
+                listaProfesor.add(profesor);
+            }
+            return listaProfesor;
+
+        } catch (SQLException | ClassNotFoundException ex) {
+        }
+        return null;
+    }
+
+    public boolean add(Profesor profesor) {
+        try {
+
+            String query = "insert into profesor (nombre, apellido, cedula) "
+                    + " VALUES ('" + profesor.getNombre() + "', '" + profesor.getApellido() + "'," + profesor.cedula + ");";
+            Statement statement = ConnectionManager.connect().createStatement();
+
+            int result = statement.executeUpdate(query);
+            if (result > 0) {
+                return true;
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+        }
+        return false;
+    }
+
+    public boolean update(Profesor profesor) {
+        try {
+            String query = "";
+            if (profesor.getIdProfesor() != null) {
+                query = "update profesor  set nombre='" + profesor.getNombre() + "' "
+                        + ",  apellido= '" + profesor.getApellido() + "' "
+                        + ", cedula =" + profesor.cedula + 
+                        " WHERE idprofesor =" + profesor.getIdProfesor();
+            }
+            else if (profesor.getCedula() != null) {
+                query = "update profesor  set nombre='" + profesor.getNombre() + "'"
+                        + " ,  apellido= '" + profesor.getApellido() + "' "
+                        + " WHERE cedula=" + profesor.getCedula();
+            }
+            System.out.println("QUERY: " + query);
+            Statement statement = ConnectionManager.connect().createStatement();
+
+            int result = statement.executeUpdate(query);
+            if (result > 0) {
+                return true;
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+        }
+        return false;
+    }
+
+    public boolean delete(Profesor profesor) {
+        try {
+            String query = "";
+            if (profesor.getIdProfesor() == null) {
+                if (profesor.getCedula() != null) {
+                    query = "delete from profesor  where cedula=" + profesor.getCedula();
+                }
+            } else {
+                query = "delete from profesor  where idprofesor =" + profesor.getIdProfesor();
+            }
+            Statement statement = ConnectionManager.connect().createStatement();
+
+            int result = statement.executeUpdate(query);
+            if (result > 0) {
+                return true;
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+        }
+        return false;
+    }
+
+    
+
+    public List<Profesor> cargarListaProfesor() {
         System.out.println("Cargando lista de Profesores");
         System.out.println("---------------------------");
+        List<Profesor> listaProfesor = getAll();
+        listaProfesor.forEach((profesor) -> {
+            System.out.println("Profesor Inscripto: " + profesor);
+        });
+        return listaProfesor;
+    }
 
-        listaProfesores = obtenerListaProfesores();
-        for (Profesor profe : listaProfesores) {
-            System.out.println("Profesores Habilitados: " + profe);
+    public static void main(String[] args) {
+//        new ProfesoresManager().pruebaGetAll();    
+        new ProfesoresManager().pruebaAddProfesor();
+        new ProfesoresManager().pruebaUpdateProfesor();
+        new ProfesoresManager().pruebaDeleteProfesor();
+    }
+
+    private void pruebaGetAll() {
+        System.out.println("Prueba del Profesor Manager");
+
+        List<Profesor> listaProfesor = new ProfesoresManager().getAll();
+        listaProfesor.forEach((profesor) -> {
+            System.out.println("Profesor registrado en la base: " + profesor);
+        });
+    }
+
+    private void pruebaAddProfesor() {
+        System.out.println("Prueba Add Profesor");
+        Profesor profesor = new Profesor(null, "benito", "barrios", 999999);
+        boolean resultado = new ProfesoresManager().add(profesor);
+        if (resultado) {
+            System.out.println("CARGOOO EL Profe");
+        } else {
+            System.out.println("NDEEE NDOIKOI");
         }
-        return listaProfesores;
+
     }
-    private List<Profesor> obtenerListaProfesores() {
-        List<Profesor> listaProfesores = new ArrayList();
-        Profesor chapatin = new Profesor(1, "Chapatin", "Bonaparte", 32123);
-        Profesor manuelJulio = new Profesor(2, "Manuel", "Julio", 323443252);
-        listaProfesores.add(chapatin);
-        listaProfesores.add(manuelJulio);
-        return listaProfesores;
+    private void pruebaUpdateProfesor() {
+        System.out.println("Prueba updateProfesor ");
+        Profesor profesor = new Profesor(null, "Bodoke", "barrios", 999999);
+        boolean resultado = new ProfesoresManager().update(profesor);
+        if (resultado) {
+            System.out.println("UPDATE EL PROFESOR");
+        } else {
+            System.out.println("NDEEE NDOIKOI");
+        }
+
     }
-    
+
+    private void pruebaDeleteProfesor() {
+        System.out.println("Prueba Delete Profesor");
+        Profesor profesor = new Profesor(null, "Bodoke", "barrios", 999999);
+        boolean resultado = new ProfesoresManager().delete(profesor);
+        if (resultado) {
+            System.out.println("Elimino EL Profesor");
+        } else {
+            System.out.println("NDEEE NDOIKOI");
+        }
+
+    }
+
 }

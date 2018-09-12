@@ -41,6 +41,5 @@ public class Profesor  extends Persona{
     public String toString() {
         return "Profesor{" + "idProfesor=" + idProfesor + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + '}';
     }                    
-    
-    
+
 }
