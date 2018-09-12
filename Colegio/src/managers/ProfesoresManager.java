@@ -29,7 +29,7 @@ public class ProfesoresManager {
             rs = statement.executeQuery(query);
             while (rs.next()) {
                 Profesor profesor = new Profesor();
-                profesor.setIdProfesor(rs.getInt("idprofesores"));
+                profesor.setIdProfesor(rs.getInt("idprofesor"));
                 profesor.setNombre(rs.getString("nombre"));
                 profesor.setApellido(rs.getString("apellido"));
                 profesor.setCedula(rs.getInt("cedula"));
@@ -38,6 +38,7 @@ public class ProfesoresManager {
             return listaProfesor;
 
         } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
         return null;
     }
@@ -120,7 +121,7 @@ public class ProfesoresManager {
     public static void main(String[] args) {
         new ProfesoresManager().pruebaGetAll();    
 //        new ProfesoresManager().pruebaAddProfesor();
-//        new ProfesoresManager().pruebaUpdateProfesor();
+        new ProfesoresManager().pruebaUpdateProfesor();
 //        new ProfesoresManager().pruebaDeleteProfesor();
     }
 
