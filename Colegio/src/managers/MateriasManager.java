@@ -46,8 +46,8 @@ public class MateriasManager {
     public boolean add(Materia materia) {
         try {
 
-            String query = "insert into materia (descripcion, idmateria) "
-                    + " VALUES ('" + materia.getDescripcion() + "', " + materia.idMateria + ");";
+            String query = ");" + "insert into materia (descripcion, idmateria) "
+                    + " VALUES ('" + materia.getDescripcion() + "', " + materia.getCantidadMaxima();
             Statement statement = ConnectionManager.connect().createStatement();
 
             int result = statement.executeUpdate(query);
@@ -115,10 +115,10 @@ public class MateriasManager {
     }
 
     public static void main(String[] args) {
-        new MateriasManager().pruebaGetAll();
+ //       new MateriasManager().pruebaGetAll();
         new MateriasManager().pruebaAddMateria();
-        new MateriasManager().pruebaUpdateMateria();
-        new MateriasManager().pruebaDeleteMateria();
+ //       new MateriasManager().pruebaUpdateMateria();
+ //       new MateriasManager().pruebaDeleteMateria();
     }
 
     private void pruebaGetAll() {

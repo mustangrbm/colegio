@@ -25,6 +25,10 @@ public class Materia {
 
     public Materia() {
     }
+
+    public Materia(String base) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 
     public Integer getIdMateria() {
