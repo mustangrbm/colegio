@@ -14,9 +14,7 @@ import entidades.Materia;
 import entidades.Profesor;
 import java.util.ArrayList;
 import java.util.List;
-import managers.AlumnosManager;
 import managers.MateriasManager;
-import managers.ProfesoresManager;
 import util.LecturaDatosIngresados;
 
 /**

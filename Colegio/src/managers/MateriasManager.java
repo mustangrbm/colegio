@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import util.ConnectionManager;
 
@@ -30,7 +31,6 @@ public class MateriasManager {
                 Materia materia = new Materia();
                 materia.setIdMateria(rs.getInt("idmateria"));
                 materia.setDescripcion(rs.getString("Descripcion"));
-                materia.setidMateria(rs.getInt("Idmateria"));
                 listaMateria.add(materia);
             }
             return listaMateria;
@@ -64,11 +64,11 @@ public class MateriasManager {
             String query = "";
             if (materia.getIdMateria() != null) {
                 query = ", idmateria ="
-                       + "update materia  set descripcion='" + materia.getdescripcion() + "' " + materia.idMateria + 
+                       + "update materias  set descripcion='" + materia.getdescripcion() +
                         " WHERE idMateria =" + materia.getIdMateria();
             }
             else if (materia.getidMateria() != null) {
-                query = "update materia  set descripcion='" + materia.getidMateria() + "'"
+                query = "update materias  set descripcion='" + materia.getidMateria() + "'"
                        + " WHERE idMateria=" + materia.getidMateria();
             }
             System.out.println("QUERY: " + query);
@@ -88,10 +88,10 @@ public class MateriasManager {
             String query = "";
             if (materia.getidMateria() == null) {
                 if (materia.getidMateria() != null) {
-                    query = "delete from materia  where idmateria=" + materia.getidMateria();
+                    query = "delete from materias  where idmateria=" + materia.getidMateria();
                 }
             } else {
-                query = "delete from materia  where idmateria =" + materia.getIdMateria();
+                query = "delete from materias  where idmateria =" + materia.getIdMateria();
             }
             Statement statement = ConnectionManager.connect().createStatement();
 
@@ -105,7 +105,7 @@ public class MateriasManager {
     }
     
     public List<Materia> cargarListaMateria() {
-        System.out.println("Cargando lista de Profesores");
+        System.out.println("Cargando lista de materias");
         System.out.println("---------------------------");
         List<Materia> listaMateria = getAll();
         listaMateria.forEach((materia) -> {
@@ -132,7 +132,7 @@ public class MateriasManager {
 
     private void pruebaAddMateria() {
         System.out.println("Prueba Add Materia");
-        Materia materia = new Materia(null, "ingles", 9);
+        Materia materia = new Materia(null, "Base", 9);
         boolean resultado = new MateriasManager().add(materia);
         if (resultado) {
             System.out.println("CARGOOO la Materia");
@@ -143,7 +143,7 @@ public class MateriasManager {
     }
     private void pruebaUpdateMateria() {
         System.out.println("Prueba updatemateria ");
-        Materia materia = new Materia(null, "Ingles", 99);
+        Materia materia = new Materia(null, "Basedd", 99);
         boolean resultado = new MateriasManager().update(materia);
         if (resultado) {
             System.out.println("UPDATE de la Materia");
@@ -155,7 +155,7 @@ public class MateriasManager {
 
     private void pruebaDeleteMateria() {
         System.out.println("Prueba Delete Materia");
-        Materia materia = new Materia(null, "Ingles", 99);
+        Materia materia = new Materia(null, "Basedd", 99);
         boolean resultado = new MateriasManager().delete(materia);
         if (resultado) {
             System.out.println("Elimino la Materia");
@@ -163,6 +163,10 @@ public class MateriasManager {
             System.out.println("NDEEE NDOIKOI");
         }
 
+    }
+
+    public Collection<? extends Materia> cargarListaMaterias() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
         }
 
