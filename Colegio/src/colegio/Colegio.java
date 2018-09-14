@@ -102,10 +102,6 @@ public class Colegio {
         System.out.println("Materias:" + listaMaterias.size());
 
     }
+ }
 
-    private void registrarmaterias() {
-        listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
-        listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
-        listaMaterias.addAll(new MateriasManager().cargarListaMaterias());
-    }
-}
+   

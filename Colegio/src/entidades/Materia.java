@@ -56,16 +56,6 @@ public class Materia {
         return "Materia{" + "idMateria=" + idMateria + ", descripcion=" + descripcion + ", cantidadMaxima=" + cantidadMaxima + '}';
     }
 
-    public String getdescripcion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    public Object getidMateria() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-   
-    
-    
     
 }
