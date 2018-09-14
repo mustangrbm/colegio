@@ -18,7 +18,8 @@ import util.ConnectionManager;
  * @author cbustamante
  */
 public class MateriasManager {
-  public List<Materia> getAll() {
+
+    public List<Materia> getAll() {
         List<Materia> listaMateria = new ArrayList();
         try {
 
@@ -30,8 +31,7 @@ public class MateriasManager {
                 Materia materia = new Materia();
                 materia.setDescripcion(rs.getString("descripcion"));
                 materia.setCantidadMaxima(rs.getInt("cantmax"));
-                  
-                
+
                 listaMateria.add(materia);
             }
             return listaMateria;
@@ -41,14 +41,13 @@ public class MateriasManager {
         }
         return null;
 
-}
+    }
 
-  
     public boolean add(Materia materia) {
         try {
 
             String query = "insert into materia (descripcion, idmateria) "
-                    + " VALUES ('" + materia.getDescripcion()+ "', " + materia.idMateria + ");";
+                    + " VALUES ('" + materia.getDescripcion() + "', " + materia.idMateria + ");";
             Statement statement = ConnectionManager.connect().createStatement();
 
             int result = statement.executeUpdate(query);
@@ -65,12 +64,11 @@ public class MateriasManager {
             String query = "";
             if (materia.getIdMateria() != null) {
                 query = ", idmateria ="
-                       + "update materias  set descripcion='" + materia.getDescripcion()+
-                        " WHERE idMateria =" + materia.getIdMateria();
-            }
-            else if (materia.getDescripcion()!= null) {
-                query = "update materias  set descripcion='" + materia.getDescripcion()+ "'"
-                       + " WHERE idMateria=" + materia.getDescripcion();
+                        + "update materias  set descripcion='" + materia.getDescripcion()
+                        + " WHERE idMateria =" + materia.getIdMateria();
+            } else if (materia.getDescripcion() != null) {
+                query = "update materias  set descripcion='" + materia.getDescripcion() + "'"
+                        + " WHERE idMateria=" + materia.getDescripcion();
             }
             System.out.println("QUERY: " + query);
             Statement statement = ConnectionManager.connect().createStatement();
@@ -87,12 +85,10 @@ public class MateriasManager {
     public boolean delete(Materia materia) {
         try {
             String query = "";
-            if (materia.getDescripcion()== null) {
-                if (materia.idMateria() != null) {
-                    query = "delete from materias  where idmateria=" + materia.idMateria();
-                }
-            } else {
-                query = "delete from materias  where idmateria =" + materia.getIdMateria();
+            if (materia.getIdMateria() != null) {
+                query = "delete from materias  where idmateria=" + materia.getIdMateria();
+            } else if (materia.getDescripcion() != null) {
+                query = "delete from materias  where descripcion =" + materia.getDescripcion();
             }
             Statement statement = ConnectionManager.connect().createStatement();
 
@@ -104,7 +100,7 @@ public class MateriasManager {
         }
         return false;
     }
-    
+
     public List<Materia> cargarListaMateria() {
         System.out.println("Cargando lista de materias");
         System.out.println("---------------------------");
@@ -116,13 +112,13 @@ public class MateriasManager {
     }
 
     public static void main(String[] args) {
-       new MateriasManager().pruebaGetAll();    
-       new MateriasManager().pruebaAddMateria();
-       new MateriasManager().pruebaUpdateMateria();
-       new MateriasManager().pruebaDeleteMateria();
+        new MateriasManager().pruebaGetAll();
+        new MateriasManager().pruebaAddMateria();
+        new MateriasManager().pruebaUpdateMateria();
+        new MateriasManager().pruebaDeleteMateria();
     }
 
-   private void pruebaGetAll() {
+    private void pruebaGetAll() {
         System.out.println("Prueba del Materias Manager");
 
         List<Materia> listaMateria = new MateriasManager().getAll();
@@ -142,6 +138,7 @@ public class MateriasManager {
         }
 
     }
+
     private void pruebaUpdateMateria() {
         System.out.println("Prueba updatemateria ");
         Materia materia = new Materia(null, "Basedd", 99);
@@ -165,7 +162,4 @@ public class MateriasManager {
         }
 
     }
-        }
-
-
-
+}
