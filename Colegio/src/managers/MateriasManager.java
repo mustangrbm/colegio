@@ -55,6 +55,7 @@ public class MateriasManager {
                 return true;
             }
         } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
         return false;
     }
@@ -78,6 +79,7 @@ public class MateriasManager {
                 return true;
             }
         } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
         return false;
     }
@@ -97,6 +99,7 @@ public class MateriasManager {
                 return true;
             }
         } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
         return false;
     }
