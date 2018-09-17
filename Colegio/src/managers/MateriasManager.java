@@ -45,9 +45,10 @@ public class MateriasManager {
 
     public boolean add(Materia materia) {
         try {
-
-            String query = ");" + "insert into materia (descripcion, idmateria) "
-                    + " VALUES ('" + materia.getDescripcion() + "', " + materia.getCantidadMaxima();
+                    
+            String query =  "insert into materias (descripcion, cantmax) " 
+                    + " VALUES ('" + materia.getDescripcion() + "', " + materia.getCantidadMaxima() + ");";
+            System.out.println("QUERY:" + query);
             Statement statement = ConnectionManager.connect().createStatement();
 
             int result = statement.executeUpdate(query);
@@ -63,14 +64,12 @@ public class MateriasManager {
     public boolean update(Materia materia) {
         try {
             String query = "";
-            if (materia.getIdMateria() != null) {
-                query = ", idmateria ="
-                        + "update materias  set descripcion='" + materia.getDescripcion()
-                        + " WHERE idMateria =" + materia.getIdMateria();
-            } else if (materia.getDescripcion() != null) {
-                query = "update materias  set descripcion='" + materia.getDescripcion() + "'"
-                        + " WHERE idMateria=" + materia.getDescripcion();
-            }
+            if (materia.getDescripcion()!= null) {
+                query = "update materias  set descripcion='"
+                        + ", descripcion =" + materia.getDescripcion();
+                        } else if (materia.getDescripcion() != null) {
+                query = "update materias  set descripcion='" + materia.getDescripcion() + "'";
+                                    }
             System.out.println("QUERY: " + query);
             Statement statement = ConnectionManager.connect().createStatement();
 
@@ -115,10 +114,10 @@ public class MateriasManager {
     }
 
     public static void main(String[] args) {
- //       new MateriasManager().pruebaGetAll();
-        new MateriasManager().pruebaAddMateria();
- //       new MateriasManager().pruebaUpdateMateria();
- //       new MateriasManager().pruebaDeleteMateria();
+        new MateriasManager().pruebaGetAll();
+    //    new MateriasManager().pruebaAddMateria();
+      // new MateriasManager().pruebaUpdateMateria();
+   //     new MateriasManager().pruebaDeleteMateria();
     }
 
     private void pruebaGetAll() {
@@ -132,7 +131,7 @@ public class MateriasManager {
 
     private void pruebaAddMateria() {
         System.out.println("Prueba Add Materia");
-        Materia materia = new Materia(null, "Base", 9);
+        Materia materia = new Materia(null, "Informatica" , 9);
         boolean resultado = new MateriasManager().add(materia);
         if (resultado) {
             System.out.println("CARGOOO la Materia");
@@ -144,7 +143,7 @@ public class MateriasManager {
 
     private void pruebaUpdateMateria() {
         System.out.println("Prueba updatemateria ");
-        Materia materia = new Materia(null, "Basedd", 99);
+        Materia materia = new Materia(null, "Informatica", 9);
         boolean resultado = new MateriasManager().update(materia);
         if (resultado) {
             System.out.println("UPDATE de la Materia");
