@@ -81,12 +81,10 @@ public class MateriasManager {
 
     public boolean delete(Materia materia) {
         try {
-            String query = "";
-            if (materia.getIdMateria() != null) {
-                query = "delete from materias  where idmateria=" + materia.getIdMateria();
-            } else if (materia.getDescripcion() != null) {
-                query = "delete from materias  where descripcion =" + materia.getDescripcion();
-            }
+           String query = "";
+             query = "update materias set descripcion='Base' where idmateria=4 and cantmax = 9 ;";
+
+            System.out.println("QUERY: " + query);
             Statement statement = ConnectionManager.connect().createStatement();
 
             int result = statement.executeUpdate(query);
@@ -111,9 +109,9 @@ public class MateriasManager {
 
     public static void main(String[] args) {
  //       new MateriasManager().pruebaGetAll();
-  //     new MateriasManager().pruebaAddMateria();
-       new MateriasManager().pruebaUpdateMateria();
-   //     new MateriasManager().pruebaDeleteMateria();
+     //  new MateriasManager().pruebaAddMateria();
+    //   new MateriasManager().pruebaUpdateMateria();
+       new MateriasManager().pruebaDeleteMateria();
     }
 
     private void pruebaGetAll() {
@@ -127,7 +125,7 @@ public class MateriasManager {
 
     private void pruebaAddMateria() {
         System.out.println("Prueba Add Materia");
-        Materia materia = new Materia(null, "Base" , 9);
+        Materia materia = new Materia(null, "Informatica" , 9);
         boolean resultado = new MateriasManager().add(materia);
         if (resultado) {
             System.out.println("CARGOOO la Materia");
@@ -139,7 +137,7 @@ public class MateriasManager {
 
     private void pruebaUpdateMateria() {
         System.out.println("Prueba updatemateria ");
-        Materia materia = new Materia(null, "Basedd", 99);
+        Materia materia = new Materia(null, "base", 99);
         boolean resultado = new MateriasManager().update(materia);
         if (resultado) {
             System.out.println("UPDATE de la Materia");
