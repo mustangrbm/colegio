@@ -64,12 +64,8 @@ public class MateriasManager {
     public boolean update(Materia materia) {
         try {
             String query = "";
-            if (materia.getDescripcion()!= null) {
-                query = "update materias  set descripcion='"
-                        + ", descripcion =" + materia.getDescripcion();
-                        } else if (materia.getDescripcion() != null) {
-                query = "update materias  set descripcion='" + materia.getDescripcion() + "'";
-                                    }
+             query = "update materias set descripcion='Base' where idmateria=4 and cantmax = 9 ";
+
             System.out.println("QUERY: " + query);
             Statement statement = ConnectionManager.connect().createStatement();
 
@@ -114,9 +110,9 @@ public class MateriasManager {
     }
 
     public static void main(String[] args) {
-        new MateriasManager().pruebaGetAll();
-    //    new MateriasManager().pruebaAddMateria();
-      // new MateriasManager().pruebaUpdateMateria();
+ //       new MateriasManager().pruebaGetAll();
+  //     new MateriasManager().pruebaAddMateria();
+       new MateriasManager().pruebaUpdateMateria();
    //     new MateriasManager().pruebaDeleteMateria();
     }
 
@@ -131,7 +127,7 @@ public class MateriasManager {
 
     private void pruebaAddMateria() {
         System.out.println("Prueba Add Materia");
-        Materia materia = new Materia(null, "Informatica" , 9);
+        Materia materia = new Materia(null, "Base" , 9);
         boolean resultado = new MateriasManager().add(materia);
         if (resultado) {
             System.out.println("CARGOOO la Materia");
@@ -143,7 +139,7 @@ public class MateriasManager {
 
     private void pruebaUpdateMateria() {
         System.out.println("Prueba updatemateria ");
-        Materia materia = new Materia(null, "Informatica", 9);
+        Materia materia = new Materia(null, "Basedd", 99);
         boolean resultado = new MateriasManager().update(materia);
         if (resultado) {
             System.out.println("UPDATE de la Materia");
