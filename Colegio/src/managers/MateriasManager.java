@@ -108,10 +108,10 @@ public class MateriasManager {
     }
 
     public static void main(String[] args) {
- //       new MateriasManager().pruebaGetAll();
+       new MateriasManager().pruebaGetAll();
      //  new MateriasManager().pruebaAddMateria();
     //   new MateriasManager().pruebaUpdateMateria();
-       new MateriasManager().pruebaDeleteMateria();
+  //     new MateriasManager().pruebaDeleteMateria();
     }
 
     private void pruebaGetAll() {
