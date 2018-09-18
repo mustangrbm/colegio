@@ -54,7 +54,8 @@ SET default_with_oids = false;
 CREATE TABLE public.alumnos (
     idalumno numeric NOT NULL,
     nombre character varying(200),
-    apellido character varying
+    apellido character varying,
+    cedula integer
 );
 
 
@@ -157,7 +158,7 @@ ALTER SEQUENCE public.inscripciones_idinscripciones_seq OWNED BY public.inscripc
 --
 
 CREATE TABLE public.materias (
-    materia character varying,
+    descripcion character varying,
     cantmax integer,
     idmateria integer NOT NULL
 );
@@ -194,7 +195,8 @@ CREATE TABLE public.profesores (
     idprofesor integer NOT NULL,
     nombre character varying,
     apellido character varying,
-    idmateria integer
+    idmateria integer,
+    cedula integer
 );
 
 
@@ -260,13 +262,13 @@ ALTER TABLE ONLY public.profesores ALTER COLUMN idprofesor SET DEFAULT nextval('
 -- Data for Name: alumnos; Type: TABLE DATA; Schema: public; Owner: rbm
 --
 
-COPY public.alumnos (idalumno, nombre, apellido) FROM stdin;
-1	Carlos	Bustamante
-2	Rodrigo	Bustamante
-4	Matias	Fernandez
-5	Alexis	Sanchez
-3	Sebastian	Bustamante
-6	Julio	Gonzalez
+COPY public.alumnos (idalumno, nombre, apellido, cedula) FROM stdin;
+1	Carlos	Bustamante	\N
+2	Rodrigo	Bustamante	\N
+4	Matias	Fernandez	\N
+5	Alexis	Sanchez	\N
+6	Julio	Gonzalez	\N
+3	C.Sebastian	Bustamante	\N
 \.
 
 
@@ -298,10 +300,11 @@ COPY public.inscripciones (idinscripcion, idalumno, idprofesor, idmateria) FROM 
 -- Data for Name: materias; Type: TABLE DATA; Schema: public; Owner: rbm
 --
 
-COPY public.materias (materia, cantmax, idmateria) FROM stdin;
+COPY public.materias (descripcion, cantmax, idmateria) FROM stdin;
 Matematicas	45	1
 Ingles	60	2
 Sql	50	3
+Base	9	4
 \.
 
 
@@ -309,10 +312,11 @@ Sql	50	3
 -- Data for Name: profesores; Type: TABLE DATA; Schema: public; Owner: rbm
 --
 
-COPY public.profesores (idprofesor, nombre, apellido, idmateria) FROM stdin;
-1	Chapatin	Bonaparte	2
-3	Hail	Hitler	1
-4	Manuel	Julio	3
+COPY public.profesores (idprofesor, nombre, apellido, idmateria, cedula) FROM stdin;
+1	Chapatin	Bonaparte	2	\N
+3	Hail	Hitler	1	\N
+4	Manuel	Julio	3	\N
+5	Bodoke	barrios	\N	999999
 \.
 
 
@@ -320,7 +324,7 @@ COPY public.profesores (idprofesor, nombre, apellido, idmateria) FROM stdin;
 -- Name: alumnos_idalumno_seq; Type: SEQUENCE SET; Schema: public; Owner: rbm
 --
 
-SELECT pg_catalog.setval('public.alumnos_idalumno_seq', 6, true);
+SELECT pg_catalog.setval('public.alumnos_idalumno_seq', 9, true);
 
 
 --
@@ -341,14 +345,14 @@ SELECT pg_catalog.setval('public.inscripciones_idinscripciones_seq', 11, true);
 -- Name: materias_idmateria_seq; Type: SEQUENCE SET; Schema: public; Owner: rbm
 --
 
-SELECT pg_catalog.setval('public.materias_idmateria_seq', 3, true);
+SELECT pg_catalog.setval('public.materias_idmateria_seq', 7, true);
 
 
 --
 -- Name: profesores_idprofesor_seq; Type: SEQUENCE SET; Schema: public; Owner: rbm
 --
 
-SELECT pg_catalog.setval('public.profesores_idprofesor_seq', 4, true);
+SELECT pg_catalog.setval('public.profesores_idprofesor_seq', 5, true);
 
 
 --
