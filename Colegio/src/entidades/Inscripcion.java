@@ -5,6 +5,8 @@
  */
 package entidades;
 
+import java.util.Date;
+
 /**
  *
  * @author bustatech
@@ -14,8 +16,10 @@ public class Inscripcion {
     private Alumno alumno;
     private Profesor profesor;
     private Materia materia;
+    private Date fecha;
    
     public Inscripcion(){
+        fecha = new Date();
         
     }
     public Inscripcion(Integer idInscripcion, Alumno alumno, Profesor profesor, Materia materia) {
@@ -23,6 +27,7 @@ public class Inscripcion {
         this.alumno = alumno;
         this.profesor = profesor;
         this.materia = materia;
+        fecha = new Date();
     }
     
 
@@ -57,6 +62,15 @@ public class Inscripcion {
     public void setMateria(Materia materia) {
         this.materia = materia;
     }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+    
     
     
     

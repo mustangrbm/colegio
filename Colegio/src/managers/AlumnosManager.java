@@ -44,6 +44,30 @@ public class AlumnosManager {
         }
         return null;
     }
+     public Alumno getById(Integer idAlumno) {
+        try {
+            Alumno alumno = new Alumno();
+            String query = "SELECT * FROM alumnos WHERE idalumno=" + idAlumno;
+            Statement statement = ConnectionManager.connect().createStatement();
+            ResultSet rs;
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
+
+                alumno.setIdAlumno(rs.getInt("idalumno"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setCedula(rs.getInt("cedula"));
+               
+            }
+            return alumno;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 
     public boolean add(Alumno alumno) {
         try {
