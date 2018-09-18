@@ -126,7 +126,8 @@ CREATE TABLE public.inscripciones (
     idinscripcion integer NOT NULL,
     idalumno integer,
     idprofesor integer,
-    idmateria integer
+    idmateria integer,
+    fecha date
 );
 
 
@@ -284,15 +285,15 @@ COPY public.cuota (id_cuota, id_alumno, descripcion, pagado, fecha_pago) FROM st
 -- Data for Name: inscripciones; Type: TABLE DATA; Schema: public; Owner: rbm
 --
 
-COPY public.inscripciones (idinscripcion, idalumno, idprofesor, idmateria) FROM stdin;
-2	3	3	1
-4	1	3	1
-6	1	4	3
-7	3	4	3
-8	2	1	2
-9	4	4	3
-10	5	1	1
-11	6	3	1
+COPY public.inscripciones (idinscripcion, idalumno, idprofesor, idmateria, fecha) FROM stdin;
+2	3	3	1	\N
+4	1	3	1	\N
+6	1	4	3	\N
+7	3	4	3	\N
+8	2	1	2	\N
+9	4	4	3	\N
+10	5	1	1	\N
+11	6	3	1	\N
 \.
 
 
