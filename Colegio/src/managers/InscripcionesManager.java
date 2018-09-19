@@ -36,11 +36,11 @@ public class InscripcionesManager {
                 inscripcion.setFecha(rs.getDate("fecha"));
                 //cargar el alumno
                 Integer idAlumno=rs.getInt("idalumno");
-                inscripcion.setAlumno(new AlumnosManager().getById(idAlumno));
+                inscripcion.setAlumno(new AlumnosManager().getById(idProfesor));
                 //cargar profesor
                 
-                //cargar materia
-                
+               //cargar materia
+         
                 
                 listaInscripciones.add(inscripcion);
             }
@@ -55,8 +55,8 @@ public class InscripcionesManager {
     }
 
     public boolean add(Inscripcion inscripcion) {
-//        try {
-//
+        try {
+
 //            String query = "insert into inscripcions (nombre, apellido, cedula) "
 //                    + " VALUES ('" + inscripcion.getNombre() + "', '" + inscripcion.getApellido() + "'," + inscripcion.cedula + ");";
 //            Statement statement = ConnectionManager.connect().createStatement();
