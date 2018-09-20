@@ -44,6 +44,10 @@ public class Materia {
         this.descripcion = descripcion;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getCantidadMaxima() {
         return cantidadMaxima;
     }
@@ -55,6 +59,10 @@ public class Materia {
     @Override
     public String toString() {
         return "Materia{" + "idMateria=" + idMateria + ", descripcion=" + descripcion + ", cantidadMaxima=" + cantidadMaxima + '}';
+    }
+
+    public void getCantidadMaxima(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

@@ -10,6 +10,10 @@ import entidades.Inscripcion;
 import entidades.Materia;
 import entidades.Profesor;
 import java.util.List;
+import managers.AlumnosManager;
+import managers.InscripcionesManager;
+import managers.MateriasManager;
+import managers.ProfesoresManager;
 import util.LecturaDatosIngresados;
 
 /**
@@ -18,20 +22,22 @@ import util.LecturaDatosIngresados;
  */
 public class InscripcionController {
 
-    public Inscripcion inscribirAlumno(List<Alumno> listaAlumnos, List<Profesor> listaProfesores, List<Materia> listaMaterias) {
+    public Inscripcion inscribirAlumno() {
         //1- Seleccionar el alumno
-        Alumno alumnoSeleccionado = seleccionarAlumno(listaAlumnos);
+        Alumno alumnoSeleccionado = seleccionarAlumno();
         //2- Seleccionar la materia con el profesor
-        Profesor profesorSeleccionado = seleccionarProfesor(listaProfesores);
+        Profesor profesorSeleccionado = seleccionarProfesor();
         //3- Asignar los datos al objeto Inscripcion                
-        Materia materiaSeleccionada = seleccionarMateria(listaMaterias);
+        Materia materiaSeleccionada = seleccionarMateria();
 
-        Inscripcion inscripcion = new Inscripcion(1, alumnoSeleccionado, profesorSeleccionado, materiaSeleccionada);
+        Inscripcion inscripcion = new Inscripcion(alumnoSeleccionado, profesorSeleccionado, materiaSeleccionada);
+        new InscripcionesManager().add(inscripcion);
         return inscripcion;
     }
 
-    private Alumno seleccionarAlumno(List<Alumno> listaAlumnos) {
+    private Alumno seleccionarAlumno() {
         Alumno alumnoSeleccionado = null;
+        List<Alumno> listaAlumnos = new AlumnosManager().getAll();
 
         do {
             try {
@@ -55,9 +61,9 @@ public class InscripcionController {
         return alumnoSeleccionado;
     }
 
-    private Profesor seleccionarProfesor(List<Profesor> listaProfesor) {
+    private Profesor seleccionarProfesor() {
         Profesor profesorSeleccionado = null;
-
+        List<Profesor> listaProfesor = new ProfesoresManager().getAll();
         do {
             try {
 
@@ -80,9 +86,9 @@ public class InscripcionController {
         return profesorSeleccionado;
 
     }
-    private Materia seleccionarMateria(List<Materia> listaMateria) {
+    private Materia seleccionarMateria() {
         Materia materiaSeleccionada = null;
-
+        List<Materia> listaMateria =  new MateriasManager().getAll();
         do {
             try {
 

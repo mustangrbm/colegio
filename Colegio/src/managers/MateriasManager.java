@@ -31,6 +31,7 @@ public class MateriasManager {
                 Materia materia = new Materia();
                 materia.setDescripcion(rs.getString("descripcion"));
                 materia.setCantidadMaxima(rs.getInt("cantmax"));
+                materia.setIdMateria(rs.getInt("idmateria"));
 
                 listaMateria.add(materia);
             }
@@ -106,9 +107,33 @@ public class MateriasManager {
         });
         return listaMateria;
     }
+public Materia getById(Integer idMateria) {
+                       
+        try {
+            Materia materia = new Materia();
+            String query = "SELECT * FROM materias WHERE idmateria=" + idMateria;
+            Statement statement = ConnectionManager.connect().createStatement();
+            ResultSet rs;
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
 
+                materia.setIdMateria(rs.getInt("idmateria"));
+                materia.setDescripcion(rs.getString("descripcion"));
+                materia.setCantidadMaxima(rs.getInt("cantmax"));
+                
+               
+            }
+            return materia;
+        }
+        catch(Exception ex){
+            System.out.println("Materia - getById error " + ex);
+            return null;
+        }
+    }
+    
+    
     public static void main(String[] args) {
-       new MateriasManager().pruebaGetAll();
+       new MateriasManager().pruebaGetByIdMateria();
      //  new MateriasManager().pruebaAddMateria();
     //   new MateriasManager().pruebaUpdateMateria();
   //     new MateriasManager().pruebaDeleteMateria();
@@ -159,7 +184,16 @@ public class MateriasManager {
 
     }
 
-    Materia getById(Integer idMateria) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void pruebaGetByIdMateria() {
+        System.out.println("Prueba getById Materia");
+        Materia materia =  new MateriasManager().getById(1);
+        if (materia != null && materia.getDescripcion() !=null) {
+            System.out.println("Se obtuvo la materia :" + materia);
+        } else {
+            System.out.println("NDEEE NDOIKOI");
+        }
+
     }
+
+    
 }

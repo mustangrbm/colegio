@@ -153,9 +153,10 @@ public class AlumnosManager {
 
     public static void main(String[] args) {
 //        new AlumnosManager().pruebaGetAll();    
-        new AlumnosManager().pruebaAddAlumno();
-        new AlumnosManager().pruebaUpdateAlumno();
-        new AlumnosManager().pruebaDeleteAlumno();
+        new AlumnosManager().pruebaGetById();
+//        new AlumnosManager().pruebaAddAlumno();
+//        new AlumnosManager().pruebaUpdateAlumno();
+//        new AlumnosManager().pruebaDeleteAlumno();
     }
 
     private void pruebaGetAll() {
@@ -164,6 +165,18 @@ public class AlumnosManager {
         List<Alumno> listaAlumnos = new AlumnosManager().getAll();
         for (Alumno alumno : listaAlumnos) {
             System.out.println("Alumno registrado en la base: " + alumno);
+        }
+    }
+    private void pruebaGetById() {
+        System.out.println("Prueba del Alumno Manager getById");
+
+        Alumno alumno = new AlumnosManager().getById(3);
+        if (alumno !=null && alumno.getApellido() !=null){
+                        System.out.println("Alumno registrado en la base: " + alumno);
+        }
+        else
+        {
+            System.out.println("NDOIKOIIII");
         }
     }
 

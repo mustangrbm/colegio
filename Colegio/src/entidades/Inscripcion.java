@@ -22,8 +22,7 @@ public class Inscripcion {
         fecha = new Date();
         
     }
-    public Inscripcion(Integer idInscripcion, Alumno alumno, Profesor profesor, Materia materia) {
-        this.idInscripcion = idInscripcion;
+    public Inscripcion( Alumno alumno, Profesor profesor, Materia materia) {
         this.alumno = alumno;
         this.profesor = profesor;
         this.materia = materia;

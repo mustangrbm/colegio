@@ -5,6 +5,7 @@
  */
 package managers;
 
+import entidades.Alumno;
 import entidades.Profesor;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -65,10 +66,9 @@ public class ProfesoresManager {
             if (profesor.getIdProfesor() != null) {
                 query = "update profesores  set nombre='" + profesor.getNombre() + "' "
                         + ",  apellido= '" + profesor.getApellido() + "' "
-                        + ", cedula =" + profesor.cedula + 
-                        " WHERE idprofesores =" + profesor.getIdProfesor();
-            }
-            else if (profesor.getCedula() != null) {
+                        + ", cedula =" + profesor.cedula
+                        + " WHERE idprofesores =" + profesor.getIdProfesor();
+            } else if (profesor.getCedula() != null) {
                 query = "update profesores  set nombre='" + profesor.getNombre() + "'"
                         + " ,  apellido= '" + profesor.getApellido() + "' "
                         + " WHERE cedula=" + profesor.getCedula();
@@ -106,8 +106,6 @@ public class ProfesoresManager {
         return false;
     }
 
-    
-
     public List<Profesor> cargarListaProfesor() {
         System.out.println("Cargando lista de Profesores");
         System.out.println("---------------------------");
@@ -118,11 +116,37 @@ public class ProfesoresManager {
         return listaProfesor;
     }
 
+    public Profesor getById(Integer idProfesor)  {
+
+        try {
+            Profesor profesor = new Profesor();
+            String query = "SELECT * FROM profesores WHERE idprofesor=" + idProfesor;
+            Statement statement = ConnectionManager.connect().createStatement();
+            ResultSet rs;
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
+
+                profesor.setIdProfesor(rs.getInt("idprofesor"));
+                profesor.setNombre(rs.getString("nombre"));
+                profesor.setApellido(rs.getString("apellido"));
+                profesor.setCedula(rs.getInt("cedula"));
+
+            }
+            return profesor;
+
+        } catch (Exception ex) {
+            System.out.println("Error Profesor-getById " + ex);
+            return null;
+        }
+    }
+
     public static void main(String[] args) {
-        new ProfesoresManager().pruebaGetAll();    
+//        new ProfesoresManager().pruebaGetAll();
 //        new ProfesoresManager().pruebaAddProfesor();
-        new ProfesoresManager().pruebaUpdateProfesor();
+//        new ProfesoresManager().pruebaUpdateProfesor();
 //        new ProfesoresManager().pruebaDeleteProfesor();
+        new ProfesoresManager().pruebaGetByIdProfesor();
+
     }
 
     private void pruebaGetAll() {
@@ -145,6 +169,7 @@ public class ProfesoresManager {
         }
 
     }
+
     private void pruebaUpdateProfesor() {
         System.out.println("Prueba updateProfesor ");
         Profesor profesor = new Profesor(null, "Bodoke", "barrios", 999999);
@@ -169,8 +194,14 @@ public class ProfesoresManager {
 
     }
 
-    Profesor getById(Integer idProfesor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void pruebaGetByIdProfesor() {
+        System.out.println("Prueba getById Profesor");
+        Profesor profesor = new ProfesoresManager().getById(4);
+        if (profesor !=null && profesor.getNombre() !=null) {
+            System.out.println("Se obtuvo el profesor " + profesor.getNombre() + " " + profesor.getApellido());
+        } else {
+            System.out.println("NDEEE NDOIKOI");
+        }
     }
 
 }
