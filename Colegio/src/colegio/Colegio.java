@@ -8,6 +8,7 @@ package colegio;
 import controladores.AlumnosController;
 import controladores.InscripcionController;
 import controladores.MateriasController;
+import controladores.ProfesoresController;
 import entidades.Alumno;
 import entidades.Inscripcion;
 import entidades.Materia;
@@ -23,9 +24,9 @@ import util.LecturaDatosIngresados;
  */
 public class Colegio {
 
-    private List<Profesor> listaProfesores;
-    private List<Materia> listaMaterias;
-    private List<Inscripcion> listaInscripciones;
+    private final List<Profesor> listaProfesores;
+    private final List<Materia> listaMaterias;
+    private final List<Inscripcion> listaInscripciones;
 
     public Colegio() {
         listaProfesores = new ArrayList();
@@ -70,6 +71,11 @@ public class Colegio {
                 this.listaInscripciones.add(inscripcion);
             } else if (opcionSeleccionada.equals("6")) {//Resumen de datos cargados
                 resumenDatosCargados();
+            } else if (opcionSeleccionada.equals("7")) {//Inscribir Profesor
+                Profesor profesor = new ProfesoresController().registrarprofesor();
+                        
+                                       
+                        
             }
         } while (!opcionSeleccionada.equals("0"));
         System.out.println("Saliendo del sistema.. aiooo");
@@ -86,7 +92,9 @@ public class Colegio {
         System.out.println("(4) Registrar  Materias");
         System.out.println("(5) Inscribir Alumnos");
         System.out.println("(6) Resumen de datos cargados");
+        System.out.println("(7) Inscibir Profesor");
         System.out.println("(0) Salir del Sistema");
+                
     }
 
     private void cargarDatos() {

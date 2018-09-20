@@ -42,8 +42,8 @@ public class ProfesoresController {
                 .forEach((profesor) -> {
                     System.out.println("Nombre :" + profesor.getNombre() + " \t\t Apellido:" + profesor.getApellido() + "\t\t Cedula:" + profesor.getCedula());
         });
-        }
-        } 
 
-    
-    
+    }
+    }
+
+
