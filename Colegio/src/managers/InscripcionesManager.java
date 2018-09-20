@@ -38,7 +38,8 @@ public class InscripcionesManager {
                 Integer idAlumno=rs.getInt("idalumno");
                 inscripcion.setAlumno(new AlumnosManager().getById(idProfesor));
                 //cargar profesor
-                
+                Integer idProfesor=rs.getInt("idprofesor");
+                inscripcion.setProfesor(new ProfesoresManager().getById(idProfesor))
                //cargar materia
          
                 
