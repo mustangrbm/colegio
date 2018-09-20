@@ -30,16 +30,16 @@ public class InscripcionesManager {
             while (rs.next()) {
                 Inscripcion inscripcion = new Inscripcion();
                 inscripcion.setIdInscripcion(rs.getInt("idinscripcion"));
-                
-                Integer idProfesor=rs.getInt("idprofesor");
+                               
                 Integer idMateria=rs.getInt("idmateria");
                 inscripcion.setFecha(rs.getDate("fecha"));
                 //cargar el alumno
                 Integer idAlumno=rs.getInt("idalumno");
+                Integer idProfesor = null;
                 inscripcion.setAlumno(new AlumnosManager().getById(idProfesor));
                 //cargar profesor
                 Integer idProfesor=rs.getInt("idprofesor");
-                inscripcion.setProfesor(new ProfesoresManager().getById(idProfesor))
+                inscripcion.setProfesor(new ProfesoresManager().getById(idProfesor));
                //cargar materia
          
                 
