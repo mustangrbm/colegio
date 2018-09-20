@@ -57,8 +57,8 @@ public class InscripcionesManager {
         return null;
     }
 
-    public boolean add(Inscripcion inscripcion) {
-        try {
+   // public boolean add(Inscripcion inscripcion) {
+     //   try {
 
 //            String query = "insert into inscripcions (nombre, apellido, cedula) "
 //                    + " VALUES ('" + inscripcion.getNombre() + "', '" + inscripcion.getApellido() + "'," + inscripcion.cedula + ");";
@@ -73,10 +73,10 @@ public class InscripcionesManager {
 //        } catch (ClassNotFoundException ex) {
 //            ex.printStackTrace();
 //        }
-        return false;
+//        return false;
     }
 
-    public boolean update(Inscripcion inscripcion) {
+   // public boolean update(Inscripcion inscripcion) {
 //        try {
 //            String query = "";
 //            if (inscripcion.getIdInscripcion() != null) {
@@ -102,10 +102,10 @@ public class InscripcionesManager {
 //        } catch (ClassNotFoundException ex) {
 //            ex.printStackTrace();
 //        }
-        return false;
-    }
+//        return false;
+ //   }
 
-    public boolean delete(Inscripcion inscripcion) {
+ //   public boolean delete(Inscripcion inscripcion) {
 //        try {
 //            String query = "";
 //            if (inscripcion.getIdInscripcion() != null) {
@@ -124,36 +124,36 @@ public class InscripcionesManager {
 //        } catch (ClassNotFoundException ex) {
 //            ex.printStackTrace();
 //        }
-        return false;
-    }
+//        return false;
+//    }
 
     
 
-    public List<Inscripcion> cargarListaInscripcions() {
-        System.out.println("Cargando lista de inscripcions");
-        System.out.println("---------------------------");
-        List<Inscripcion> listaInscripciones = getAll();
-        for (Inscripcion inscripcion : listaInscripciones) {
-            System.out.println("Inscripcion Inscripto: " + inscripcion);
-        }
-        return listaInscripciones;
-    }
+  //  public List<Inscripcion> cargarListaInscripcions() {
+    //    System.out.println("Cargando lista de inscripcions");
+ //       System.out.println("---------------------------");
+ //       List<Inscripcion> listaInscripciones = getAll();
+ //       for (Inscripcion inscripcion : listaInscripciones) {
+ //           System.out.println("Inscripcion Inscripto: " + inscripcion);
+ //       }
+ //       return listaInscripciones;
+ //   }
 
-    public static void main(String[] args) {
-        new InscripcionesManager().pruebaGetAll();    
+//    public static void main(String[] args) {
+//        new InscripcionesManager().pruebaGetAll();    
 //        new InscripcionsManager().pruebaAddInscripcion();
 //        new InscripcionsManager().pruebaUpdateInscripcion();
 //        new InscripcionsManager().pruebaDeleteInscripcion();
-    }
+//    }
 
-    private void pruebaGetAll() {
-        System.out.println("Prueba del Inscripcion Manager");
+//    private void pruebaGetAll() {
+//        System.out.println("Prueba del Inscripcion Manager");
 
-        List<Inscripcion> listaInscripciones = new InscripcionesManager().getAll();
-        for (Inscripcion inscripcion : listaInscripciones) {
-            System.out.println("Inscripcion registrado en la base: " + inscripcion);
-        }
-    }
+ //       List<Inscripcion> listaInscripciones = new InscripcionesManager().getAll();
+ //       for (Inscripcion inscripcion : listaInscripciones) {
+ //           System.out.println("Inscripcion registrado en la base: " + inscripcion);
+ //       }
+ //   }
 //
 //    private void pruebaAddInscripcion() {
 //        System.out.println("Prueba Add Inscripcion");
@@ -189,4 +189,4 @@ public class InscripcionesManager {
 //        }
 //
 //    }
-}
+//}
