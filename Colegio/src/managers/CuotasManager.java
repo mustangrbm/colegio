@@ -66,13 +66,22 @@ public class CuotasManager {
         return null;
     }
 public static void main(String[] args) {
-       new CuotaManager().pruebaGetAll();    
-//       new CuotasManager().pruebaGetById();
+ //      new CuotasManager().pruebaGetAll();    
+      new CuotasManager().pruebaGetById();
 //        new AlumnosManager().pruebaAddAlumno();
 //        new AlumnosManager().pruebaUpdateAlumno();
 //        new AlumnosManager().pruebaDeleteAlumno();
     }
 
+ private void pruebaGetAll() {
+        System.out.println("Prueba de Cuota Manager");
+
+        List<Cuota> listaCuota = new CuotasManager().getAll();
+        listaCuota.forEach((cuota) -> {
+            String Cuota = null;
+            System.out.println("Cuota registrado en la base: " + Cuota);
+        });
+    }
     private void pruebaGetById() {
         System.out.println("Prueba de Cuota Manager getById");
 
