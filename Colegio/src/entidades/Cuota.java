@@ -17,12 +17,17 @@ public class Cuota {
     private Boolean pagado;
     private Date fechaVencimiento;
     private Date fechaPago;
+    private Alumno alumno;
 
-    public Cuota(Integer idCuota, String descripcion, Date fechaVencimiento) {
+    public Cuota(){
+        
+    }
+    public Cuota(Alumno alumno, String descripcion, Date fechaVencimiento) {
         this.idCuota = idCuota;
         this.descripcion = descripcion;
         this.fechaVencimiento = fechaVencimiento;
         this.pagado=false;
+        this.alumno= alumno;
     }
     public void pagarCuota(){
         this.pagado=true;
@@ -70,10 +75,30 @@ public class Cuota {
         this.fechaPago = fechaPago;
     }
 
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "Cuota{" + "idCuota=" + idCuota + ", descripcion=" + descripcion + ", pagado=" + pagado + ", fechaVencimiento=" + fechaVencimiento + ", fechaPago=" + fechaPago + '}';
     }
+
+    public void setPago(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setFecha_vencimiento(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+   
     
     
     
