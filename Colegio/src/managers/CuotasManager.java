@@ -53,10 +53,10 @@ public class CuotasManager {
             rs = statement.executeQuery(query);
             while (rs.next()) {
 
-                cuota.setIdCuota(rs.getInt("idcuota"));
+                cuota.setIdCuota(rs.getInt("idalumno"));
                 cuota.setDescripcion(rs.getString("descripcion"));
                 cuota.setPago(rs.getString("Pago"));
-                cuota.setFecha_vencimiento(rs.getInt("fecha_vencimiento"));
+                cuota.setFecha_vencimiento(rs.getInt("fechavencimiento"));
                
             }
             return cuota;
@@ -66,8 +66,8 @@ public class CuotasManager {
         return null;
     }
 public static void main(String[] args) {
- //      new CuotasManager().pruebaGetAll();    
-      new CuotasManager().pruebaGetById();
+       new CuotasManager().pruebaGetAll();    
+ //     new CuotasManager().pruebaGetById();
 //        new AlumnosManager().pruebaAddAlumno();
 //        new AlumnosManager().pruebaUpdateAlumno();
 //        new AlumnosManager().pruebaDeleteAlumno();
