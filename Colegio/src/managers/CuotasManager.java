@@ -36,7 +36,7 @@ public class CuotasManager {
             while (rs.next()) {
                 Cuota cuota = new Cuota();
 
-                cuota.setIdCuota(rs.getInt("idcuota"));
+                cuota.setIdCuota(rs.getInt(""));
                 cuota.setDescripcion(rs.getString("descripcion"));
                 cuota.setPagado(rs.getBoolean("pagado"));
                 cuota.setFechaVencimiento(rs.getDate("fecha_vencimiento"));
@@ -65,7 +65,7 @@ public class CuotasManager {
             rs = statement.executeQuery(query);
             while (rs.next()) {
 
-                cuota.setIdCuota(rs.getInt("idcuota"));
+                cuota.setIdCuota(rs.getInt("id_alumno"));
                 cuota.setDescripcion(rs.getString("descripcion"));
                 cuota.setPagado(rs.getBoolean("pagado"));
                 cuota.setFechaVencimiento(rs.getDate("fecha_vencimiento"));
