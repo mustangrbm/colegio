@@ -90,16 +90,6 @@ public class Cuota {
         return "Cuota{" + "idCuota=" + idCuota + ", descripcion=" + descripcion + ", pagado=" + pagado + ", fechaVencimiento=" + fechaVencimiento + ", fechaPago=" + fechaPago + '}';
     }
 
-    public void setPago(String string) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void setFecha_vencimiento(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+  
    
-    
-    
-    
 }

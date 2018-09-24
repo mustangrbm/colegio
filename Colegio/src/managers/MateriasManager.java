@@ -133,7 +133,8 @@ public Materia getById(Integer idMateria) {
     
     
     public static void main(String[] args) {
-       new MateriasManager().pruebaGetByIdMateria();
+        new MateriasManager().pruebaGetAll();
+       //new MateriasManager().pruebaGetByIdMateria();
      //  new MateriasManager().pruebaAddMateria();
     //   new MateriasManager().pruebaUpdateMateria();
   //     new MateriasManager().pruebaDeleteMateria();
@@ -193,6 +194,10 @@ public Materia getById(Integer idMateria) {
             System.out.println("NDEEE NDOIKOI");
         }
 
+    }
+
+    private void pruebaGetallMateria() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
