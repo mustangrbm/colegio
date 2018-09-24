@@ -118,9 +118,9 @@ public class CuotasManager {
     }
 
     public static void main(String[] args) {
-//        new CuotasManager().pruebaGetAll();
+        new CuotasManager().pruebaGetAll();
 //        new CuotasManager().pruebaAdd();
-        new CuotasManager().pruebaUpdate();
+ //       new CuotasManager().pruebaUpdate();
         //    new CuotasManager().pruebaGetById();
 //        new AlumnosManager().pruebaAddAlumno();
 //        new AlumnosManager().pruebaUpdateAlumno();
