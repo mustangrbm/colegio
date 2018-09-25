@@ -24,7 +24,7 @@ public class InscripcionController {
 
     public Inscripcion inscribirAlumno() {
         //1- Seleccionar el alumno
-        Alumno alumnoSeleccionado = seleccionarAlumno();
+        Alumno alumnoSeleccionado = new AlumnosController().seleccionarAlumno();
         //2- Seleccionar la materia con el profesor
         Profesor profesorSeleccionado = seleccionarProfesor();
         //3- Asignar los datos al objeto Inscripcion                
@@ -35,31 +35,7 @@ public class InscripcionController {
         return inscripcion;
     }
 
-    private Alumno seleccionarAlumno() {
-        Alumno alumnoSeleccionado = null;
-        List<Alumno> listaAlumnos = new AlumnosManager().getAll();
-
-        do {
-            try {
-
-                System.out.println("-------------------------------------");
-                System.out.println("Inscripciones - Seleccione el alumno");
-                System.out.println("-------------------------------------");
-                int contador = 0;
-                for (Alumno alumno : listaAlumnos) {
-                    System.out.println("{" + contador + "} - " + alumno.getNombre() + " " + alumno.getApellido());
-                    contador++;
-                }
-                System.out.print("\n Codigo Alumno:");
-                Integer idAlumno = Integer.parseInt(LecturaDatosIngresados.leer());
-                alumnoSeleccionado = listaAlumnos.get(idAlumno);
-            } catch (Exception e) {
-                System.out.println("Ocurrio un error al seleccionar el alumno, intente nuevamente");
-            }
-        } while (alumnoSeleccionado == null);
-        System.out.println("Alumno Seleccionado : " + alumnoSeleccionado.getNombre() + " " + alumnoSeleccionado.getApellido());
-        return alumnoSeleccionado;
-    }
+    
 
     private Profesor seleccionarProfesor() {
         Profesor profesorSeleccionado = null;

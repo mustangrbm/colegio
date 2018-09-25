@@ -41,6 +41,7 @@ public class CuotasManager {
                 cuota.setPagado(rs.getBoolean("pagado"));
                 cuota.setFechaVencimiento(rs.getDate("fecha_vencimiento"));
                 cuota.setFechaPago(rs.getDate("fecha_pago"));
+                cuota.setMonto(rs.getDouble("monto"));
                 int idAlumno = rs.getInt("idalumno");
                 cuota.setAlumno(new AlumnosManager().getById(idAlumno));
 
@@ -70,6 +71,7 @@ public class CuotasManager {
                 cuota.setPagado(rs.getBoolean("pagado"));
                 cuota.setFechaVencimiento(rs.getDate("fecha_vencimiento"));
                 cuota.setFechaPago(rs.getDate("fecha_pago"));
+                cuota.setMonto(rs.getDouble("monto"));
                 int idAlumno = rs.getInt("idalumno");
                 cuota.setAlumno(new AlumnosManager().getById(idAlumno));
             }
@@ -84,10 +86,11 @@ public class CuotasManager {
         try {
             String id_Cuota = null;
             String query = "INSERT INTO cuotas "
-                    + "(idalumno, descripcion, pagado,fecha_vencimiento) "
+                    + "(idalumno, descripcion, pagado,fecha_vencimiento,monto) "
                     + "VALUES (" + cuota.getAlumno().getIdAlumno()
                     + ",'" + cuota.getDescripcion() + "',false,'"                    
-                    + cuota.getFechaVencimiento() + "');";
+                    + cuota.getFechaVencimiento() + "',"
+                    + cuota.getMonto() + ");";
             System.out.println("QUERY:" + query);
             Statement statement = ConnectionManager.connect().createStatement();
             int res = statement.executeUpdate(query);
@@ -118,9 +121,9 @@ public class CuotasManager {
     }
 
     public static void main(String[] args) {
-        new CuotasManager().pruebaGetAll();
+//        new CuotasManager().pruebaGetAll();
 //        new CuotasManager().pruebaAdd();
- //       new CuotasManager().pruebaUpdate();
+        new CuotasManager().pruebaUpdate();
         //    new CuotasManager().pruebaGetById();
 //        new AlumnosManager().pruebaAddAlumno();
 //        new AlumnosManager().pruebaUpdateAlumno();
@@ -135,7 +138,7 @@ public class CuotasManager {
         for (Cuota cuota : listaCuota) {
             System.out.println("Cuota registrada : " + cuota.getDescripcion()
                     + "Alumno: " + cuota.getAlumno().getNombre() + cuota.getAlumno().getApellido()
-                    + "Pagado: " + cuota.getPagado() + cuota.getPagado()
+                    + "Pagado: " + cuota.getPagado() 
                     + "Fechavencimiento " + cuota.getFechaVencimiento());
         }
     }
@@ -175,7 +178,7 @@ public class CuotasManager {
     private void pruebaUpdate() {
         System.out.println("Prueba de Cuota Manager update");
 
-        Cuota cuota = new CuotasManager().getById(5);
+        Cuota cuota = new CuotasManager().getById(1);
         cuota.setPagado(true);
         cuota.setFechaPago(new Date());
     

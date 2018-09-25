@@ -6,6 +6,7 @@
 package colegio;
 
 import controladores.AlumnosController;
+import controladores.CuotasController;
 import controladores.InscripcionController;
 import controladores.MateriasController;
 import controladores.ProfesoresController;
@@ -73,9 +74,8 @@ public class Colegio {
                 resumenDatosCargados();
             } else if (opcionSeleccionada.equals("7")) {//Inscribir Profesor
                 Profesor profesor = new ProfesoresController().registrarprofesor();
-                        
-                                       
-                        
+            } else if (opcionSeleccionada.equals("8")) {//Inscribir Profesor
+                 new CuotasController().generarCuotasAlumno();
             }
         } while (!opcionSeleccionada.equals("0"));
         System.out.println("Saliendo del sistema.. aiooo");
@@ -93,6 +93,7 @@ public class Colegio {
         System.out.println("(5) Inscribir Alumnos");
         System.out.println("(6) Resumen de datos cargados");
         System.out.println("(7) Inscibir Profesor");
+        System.out.println("(8) Generar Cuotas Alumno");
         System.out.println("(0) Salir del Sistema");
                 
     }

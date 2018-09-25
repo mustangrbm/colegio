@@ -15,7 +15,7 @@ public class Cuota {
     private Date fechaVencimiento;
     private Date fechaPago;
     private Alumno alumno;
-    private Integer monto;
+    private Double monto;
     public Cuota(){
         
     }
@@ -40,15 +40,16 @@ public class Cuota {
         this.idCuota = idCuota;
         
     }
-    
-    public Integer getMonto() {
+
+    public Double getMonto() {
         return monto;
     }
 
-    public void setMonto(Integer monto) {
-        this.monto = monto;    
+    public void setMonto(Double monto) {
+        this.monto = monto;
     }
-
+   
+    
     public String getDescripcion() {
         return descripcion;
     }
