@@ -10,8 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import util.ConnectionManager;
 
@@ -118,6 +116,18 @@ public class CuotasManager {
             ex.printStackTrace();
         }
         return false;
+        }
+    public boolean suma(Cuota cuota) {
+        try {
+            String monto = null;
+            String query = "select sum (monto) from cuotas where pagado is false="+ cuota.getMonto();
+            System.out.println("QUERY:" + query);
+            Statement statement = ConnectionManager.connect().createStatement();
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return false;    
     }
 
     public static void main(String[] args) {
