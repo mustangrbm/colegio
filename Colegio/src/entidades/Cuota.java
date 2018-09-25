@@ -1,8 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
 package entidades;
 
 import java.util.Date;
@@ -18,6 +15,7 @@ public class Cuota {
     private Date fechaVencimiento;
     private Date fechaPago;
     private Alumno alumno;
+    private Integer monto;
     public Cuota(){
         
     }
@@ -34,17 +32,21 @@ public class Cuota {
     }
     
 
+    public Integer getIdCuota() {
+        return idCuota;
+    }
+
+    public void setIdCuota(Integer idCuota) {
+        this.idCuota = idCuota;
+        
+    }
     
-    public Integer getmonto() {
-        Integer monto = null;
+    public Integer getMonto() {
         return monto;
     }
 
-    public void setMonto(Integer Monto) {
-        Integer monto = null;
-          this.getmonto() = monto;
-        
-                
+    public void setMonto(Integer monto) {
+        this.monto = monto;    
     }
 
     public String getDescripcion() {
@@ -54,7 +56,14 @@ public class Cuota {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    
+
+    public Boolean getPagado() {
+        return pagado;
+    }
+
+    public void setPagado(Boolean pagado) {
+        this.pagado = pagado;
+    }
 
     public Date getFechaVencimiento() {
         return fechaVencimiento;
@@ -72,9 +81,13 @@ public class Cuota {
         this.fechaPago = fechaPago;
     }
 
-   
-    
-    
+    public Alumno getAlumno() {
+        return alumno;
+    }
+
+    public void setAlumno(Alumno alumno) {
+        this.alumno = alumno;
+    }
     
     
 
