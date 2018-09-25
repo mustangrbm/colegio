@@ -76,6 +76,8 @@ public class Colegio {
                 Profesor profesor = new ProfesoresController().registrarprofesor();
             } else if (opcionSeleccionada.equals("8")) {//Inscribir Profesor
                  new CuotasController().generarCuotasAlumno();
+            } else if (opcionSeleccionada.equals("9")) {//Listar Cuotas
+                 new CuotasController().imprimirListaCuotas();
             }
         } while (!opcionSeleccionada.equals("0"));
         System.out.println("Saliendo del sistema.. aiooo");
