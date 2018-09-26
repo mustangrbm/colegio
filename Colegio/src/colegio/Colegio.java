@@ -77,7 +77,7 @@ public class Colegio {
             } else if (opcionSeleccionada.equals("8")) {//Inscribir Profesor
                  new CuotasController().generarCuotasAlumno();
             } else if (opcionSeleccionada.equals("9")) {//Listar Cuotas
-                 new CuotasController().imprimirListaCuotas();
+                 new CuotasController().estadoCuentasPorAlumno();
             }
         } while (!opcionSeleccionada.equals("0"));
         System.out.println("Saliendo del sistema.. aiooo");
@@ -96,6 +96,7 @@ public class Colegio {
         System.out.println("(6) Resumen de datos cargados");
         System.out.println("(7) Inscibir Profesor");
         System.out.println("(8) Generar Cuotas Alumno");
+        System.out.println("(9) Estado de Cuentas por Alumno");
         System.out.println("(0) Salir del Sistema");
                 
     }
