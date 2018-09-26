@@ -81,6 +81,33 @@ public class CuotasManager {
         }
         return null;
     }
+ public List<Cuota> getByAlumno(Integer idAlumno) {
+
+        try {
+            List<Cuota>  listaCuotas = new ArrayList();
+            String id_Cuota = null;
+            String query = "SELECT * FROM cuotas WHERE idalumno=" + idAlumno;
+            Statement statement = ConnectionManager.connect().createStatement();
+            ResultSet rs;
+            rs = statement.executeQuery(query);
+            while (rs.next()) {
+                Cuota cuota = new Cuota();
+                cuota.setIdCuota(rs.getInt("idcuota"));
+                cuota.setDescripcion(rs.getString("descripcion"));
+                cuota.setPagado(rs.getBoolean("pagado"));
+                cuota.setFechaVencimiento(rs.getDate("fecha_vencimiento"));
+                cuota.setFechaPago(rs.getDate("fecha_pago"));
+                cuota.setMonto(rs.getDouble("monto"));
+                int id = rs.getInt("idalumno");
+                cuota.setAlumno(new AlumnosManager().getById(id));
+                listaCuotas.add(cuota);
+            }
+            return listaCuotas;
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        return null;
+    }
 
     public boolean add(Cuota cuota) {
         try {
