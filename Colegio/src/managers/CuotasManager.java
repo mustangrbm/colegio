@@ -152,8 +152,7 @@ public class CuotasManager {
 //        new CuotasManager().pruebaAdd();
         new CuotasManager().pruebaUpdate();
         //    new CuotasManager().pruebaGetById();
-//        new AlumnosManager().pruebaAddAlumno();
-//        new AlumnosManager().pruebaUpdateAlumno();
+//            
 //        new AlumnosManager().pruebaDeleteAlumno();
     }
 
@@ -205,7 +204,7 @@ public class CuotasManager {
     private void pruebaUpdate() {
         System.out.println("Prueba de Cuota Manager update");
 
-        Cuota cuota = new CuotasManager().getById(1);
+        Cuota cuota = new CuotasManager().getById(22);
         cuota.setPagado(true);
         cuota.setFechaPago(new Date());
     
